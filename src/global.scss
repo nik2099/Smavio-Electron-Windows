@@ -1,0 +1,105 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.custom-ion-alert {
+  z-index: 99999 !important;
+  text-align: center !important;
+}
+.custom-ion-alert .alert-title {
+  text-align: center !important;
+}
+.custom-ion-alert .alert-button-group {
+  display: block !important;
+}
+.custom-ion-alert .alert-button-group .alert-button {
+  margin: 0px auto !important;
+  text-transform: none !important;
+}
+.custom-ion-dark-btn {
+  background-color: #000 !important;
+  padding: 7px 50px !important;
+  color: #fff !important;
+}
+.custom-ion-link-btn {
+  color: #000 !important;
+  text-decoration: underline !important;
+}
+
+.login-text{
+  margin: 0px 28px;
+}
+.login-error-text {
+  margin: 0px 12px;
+}
+.login-row {
+  margin-left: 28px;
+  margin-right: 28px;
+}
+ion-input {
+  width: auto !important;
+  border: 2px solid #262626;
+  margin: 24px 28px 0px 28px;
+}
+.alert-input.sc-ion-alert-md {
+  padding: 10px 8px;
+  border: 2px solid #262626;
+}
+.alert-input.sc-ion-alert-md:focus {
+  border: 2px solid #262626;
+}
+.login-modal, .alert-wrapper.sc-ion-alert-md {
+  border: 2px solid #262626;
+  border-radius: 0;
+}
+.modal-wrapper {
+  width: 380px !important;
+  height: 420px !important;
+}
+ion-button {
+  width: 80%;
+  display: inline-block;
+  height: 45px;
+  text-transform: none;
+}
+#timecount {
+  border: 2px solid #262626;
+  border-radius: 50%;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
+  line-height: 2;
+}
+ion-progress-bar {
+  border: 1px solid #262626;
+  height: 35px;
+  --background: #fff;
+  --buffer-background: #fff;
+  --progress-background: #262626;
+}
+@media screen and (min-width: 991px){
+}

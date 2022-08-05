@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Ionic App</title>
+
+  <base href="/" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <meta name="color-scheme" content="light dark" />
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+</head>
+
+<body>
+  <app-root></app-root>
+  <script>
+
+    /* START OF APP UPDATE CODE FOR WINDOWS/MAC */
+    function getElectronAppVersion() {
+      if (document.getElementById('appVersion')) {
+        if (typeof require !== "undefined") {
+          var ipc = require('electron').ipcRenderer;
+          ipc.once('appVersion', function(event, response){
+            document.getElementById('appVersion').innerHTML = response;
+          });
+          ipc.send('getVersion');
+        }
+      } else {
+        setTimeout(getElectronAppVersion, 1200);
+      }
+    }
+    getElectronAppVersion();
+
+    async function presentCheckingUpdatesAlert() {
+      const alert = document.createElement('ion-alert');
+      alert.cssClass = 'custom-ion-alert checking-updates-alert';
+      alert.header = 'Softwareupdate prüfen';
+      alert.backdropDismiss = 'false';
+      alert.message = 'Checking for updates<br><ion-spinner></ion-spinner>';
+      alert.buttons = [
+        {
+          text: 'CANCEL',
+          cssClass: 'custom-ion-dark-btn',
+        }
+      ];
+
+      document.body.appendChild(alert);
+      await alert.present();
+
+      return alert;
+    }
+
+    async function presentUpdatesNotAvailableAlert() {
+      const alert = document.createElement('ion-alert');
+      alert.cssClass = 'custom-ion-alert updates-not-available-alert';
+      alert.header = 'Keine Updates';
+      alert.backdropDismiss = 'false';
+      alert.message = 'Ihre Software ist auf dem aktuellen Stand';
+      alert.buttons = [
+        {
+          text: 'OK',
+          cssClass: 'custom-ion-dark-btn',
+        }
+      ];
+
+      document.body.appendChild(alert);
+      await alert.present();
+    }
+
+    async function presentUpdatesErrorAlert(error) {
+      const alert = document.createElement('ion-alert');
+      alert.cssClass = 'custom-ion-alert updates-error-alert';
+      alert.header = 'Updates Error';
+      alert.backdropDismiss = 'false';
+      alert.message = error;
+      alert.buttons = [
+        {
+          text: 'OK',
+          cssClass: 'custom-ion-dark-btn',
+        },
+        {
+          text: 'Fenster schließen',
+          cssClass: 'custom-ion-link-btn'
+        }
+      ];
+
+      document.body.appendChild(alert);
+      await alert.present();
+    }
+
+    async function presentUpdatesAvailableAlert() {
+      const alert = document.createElement('ion-alert');
+      alert.cssClass = 'custom-ion-alert updates-available-alert';
+      alert.header = 'Softwareupdate prüfen';
+      alert.backdropDismiss = 'false';
+      alert.message = 'Found updates, do you want update now?';
+      alert.buttons = [
+        {
+          text: 'YES',
+          cssClass: 'custom-ion-dark-btn',
+          handler: () => {
+            downloadUpdates();
+          }
+        },
+        {
+          text: 'Fenster schließen',
+          cssClass: 'custom-ion-link-btn'
+        }
+      ];
+
+      document.body.appendChild(alert);
+      await alert.present();
+    }
+
+    async function presentDownloadUpdateAlert() {
+      const alert = document.createElement('ion-alert');
+      alert.cssClass = 'custom-ion-alert updates-download-alert';
+      alert.header = 'Downloading Updates';
+      alert.backdropDismiss = 'false';
+      alert.message = '<div id="progressPercentage"></div><div id="progressBar"></div>';
+
+      document.body.appendChild(alert);
+      await alert.present();
+    }
+
+    async function checkForUpdates() {
+      if (typeof require !== "undefined") {
+        presentCheckingUpdatesAlert().then( (alert) => {
+          checkingUpdates(alert);
+        });
+      }
+    }
+    function checkingUpdates(alert) {
+      if (typeof require !== "undefined") {
+        var ipc = require('electron').ipcRenderer;
+        ipc.once('updateResponse', function(event, response){
+          if(response.error !== ''){
+            alert.dismiss();
+            presentUpdatesErrorAlert(response.error);
+          } else if(response.isUpdateAvailable == 1){
+            alert.dismiss();
+            presentUpdatesAvailableAlert();
+          } else if(response.isUpdateAvailable == 2){
+            alert.dismiss();
+            presentUpdatesNotAvailableAlert();
+          } else {
+            setTimeout(checkingUpdates(alert), 2000);
+          }
+        });
+        ipc.send('checkForUpdates');
+      }
+    }
+
+    async function downloadUpdates() {
+      if (typeof require !== "undefined") {
+        var ipc = require('electron').ipcRenderer;
+        ipc.once('downloadResponse', function(event, response){
+          if(response){
+            presentDownloadUpdateAlert().then( () => {
+              getDownloadProgress();
+            });
+          }
+        });
+        ipc.send('downloadUpdate');
+      }
+    }
+
+    function getDownloadProgress() {
+      if (typeof require !== "undefined") {
+        var ipc = require('electron').ipcRenderer;
+        ipc.once('downloadProgress', function(event, response){
+          if(response){
+            var p = parseFloat(response.percent);
+            document.getElementById("progressPercentage").innerHTML = p+"%";
+            document.getElementById("progressBar").innerHTML = '<ion-progress-bar color="primary" value="'+(p/100)+'"></ion-progress-bar>';
+            if(p < 100){
+              setTimeout(getDownloadProgress, 2000);
+            } else {
+              document.querySelector(".updates-download-alert .alert-message").innerHTML = 'Updates downloaded, application will be quit for update...';
+            }
+          } else {
+            setTimeout(getDownloadProgress, 2000);
+          }
+        });
+        ipc.send('getDownloadProgress');
+      }
+    }
+    /* END OF APP UPDATE CODE FOR WINDOWS/MAC */
+
+    /* START OF APP SHUTDOWN CODE FOR WINDOWS/MAC */
+    var seconds = 5;
+    var intervalId = null;
+    function incrementSeconds() {
+      seconds -= 1;
+      document.getElementById('timecount').innerHTML = seconds;
+      if(seconds==0){
+        clearInterval(intervalId);
+        shutdownSystem();
+      }
+    }
+    async function presentShutdownConfirmationAlert() {
+      if (typeof require !== "undefined") {
+        const alert = document.createElement('ion-alert');
+        alert.cssClass = 'custom-ion-alert updates-available-alert';
+        alert.header = 'Gerät ausschalten';
+        alert.backdropDismiss = 'false';
+        alert.message = 'Are you sure?';
+        alert.buttons = [
+          {
+            text: 'YES',
+            cssClass: 'custom-ion-dark-btn',
+            handler: () => {
+              presentShutdownTimer().then( () => {
+                intervalId = setInterval(incrementSeconds, 1000);
+              });
+            }
+          },
+          {
+            text: 'Fenster schließen',
+            cssClass: 'custom-ion-link-btn'
+          }
+        ];
+
+        document.body.appendChild(alert);
+        await alert.present();
+      }
+    }
+    function shutdownSystem() {
+      if (typeof require !== "undefined") {
+        var ipc = require('electron').ipcRenderer;
+        ipc.once('shutdownResponse', function(event, response){
+          if(response){
+            console.log("System is shutting down");
+          }
+        });
+        ipc.send('shutdownSystem');
+      }
+    }
+    async function presentShutdownTimer() {
+      if (typeof require !== "undefined") {
+        const alert = document.createElement('ion-alert');
+        alert.cssClass = 'custom-ion-alert updates-available-alert';
+        alert.header = 'Gerät wird ausgeschaltet';
+        alert.backdropDismiss = 'false';
+        alert.message = 'Das Gerät wird in <span id="timecount">5</span> Sekunden ausgeschaltet.';
+        alert.buttons = [
+          {
+            text: 'Abbrechen',
+            cssClass: 'custom-ion-dark-btn',
+            handler: () => {
+              seconds = 5;
+              clearInterval(intervalId);
+            }
+          },
+        ];
+
+        document.body.appendChild(alert);
+        await alert.present();
+      }
+    }
+    /* END OF APP SHUTDOWN CODE FOR WINDOWS/MAC */
+  </script>
+</body>
+
+</html>

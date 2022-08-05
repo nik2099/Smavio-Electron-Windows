@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smavio Presentation App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-96x96.png">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+    <link rel="stylesheet" type="text/css" href="css/help.css">
+    <link rel="stylesheet" type="text/css" href="css/welcome.css">
+    <link rel="stylesheet" type="text/css" href="css/informationen.css">
+    <link rel="stylesheet" type="text/css" href="css/eigenschaften.css">
+    <link rel="stylesheet" type="text/css" href="css/galerie.css">
+    <link rel="stylesheet" type="text/css" href="css/carousel_slider.css">
+
+    <script type="text/javascript" src="js/libs/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/libs/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.nicescroll.js"></script>
+    <script type="text/javascript" src=js/libs/easeljs.js></script>
+    <script type="text/javascript" src=js/libs/tweenjs.js></script>
+    <script type="text/javascript" src=js/libs/TweenMax.min.js></script>
+    <script type="text/javascript"src="js/libs/radial-progress-bar.js"></script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="nav">
+    <ul class="nav_bottom">
+        <li><a id="willkommen"class="active">Willkommen</a></li>
+        <li><a id="informationen">Informationen</a></li>
+        <li><a id="eigenschaften">Eigenschaften</a></li>
+        <li><a id="galerie">Galerie</a></li>
+    </ul>
+</nav>
+
+<!-- HelpButton -->
+<div class="helpMeButton">
+    <p>?</p>
+</div>
+<div class="helpMeButton2">
+    <p class="help_click1">Hilfe holen?</p>
+    <p class="help_click2">Hier klicken!</p>
+</div>
+
+<!-- Willkommen-Fenster -->
+<section id="welcome-view" style="z-index: 100">
+    <div class="wrapper">
+        <div class="bigName"><div class="bubbles"><p></p></div></div>
+        <div class="flex">
+            <div class="welcomeLeft">
+                <div class="img_single">
+                    <div style="background-image: url(img/schuh1.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                </div>
+                <div class="img_double">
+                    <div style="background-image: url(img/adidas2.png); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                    <div style="background-image: url(img/schuh6.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                </div>
+            </div>
+            <div class="welcomeRight">
+                <div class="welcomeText">
+                    <div>
+                        <p class="welcomeSubTitle">Tennischuh / Herren</p>
+                        <p class="welcomeMainTitle">ADIZERO UBERSONIC 2.0 CLAY SCHUH</p>
+                    </div>
+                </div>
+                <div class="img_single">
+                    <div style="background-position: center; background-size: cover; background-repeat: no-repeat;">
+                        <video id="vWelcome" width="100%" src="media/adidas.mp4" muted="muted"></video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Informationen-Fenster -->
+<section id="informationen-view" style="z-index: 200">
+    <div class="wrapper">
+        <div class="infoVideoLeft">
+            <video id="vLeft">
+                <source src="media/walking-shoes2.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="infoVideoRight">
+            <video id="vRight">
+                <source src="media/walking-shoes2.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="flex">
+            <div class="infoLeft">
+                <div class="img_Farbe_single">
+                    <div class="mainFarbe" style="background-image: url(img/farbe1.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                </div>
+                <div class="infoFarben">
+                    <p>Farben</p>
+                </div>
+                <div class="img_Farben">
+                    <div class="farbe1 activeFarbe" style="background-image: url(img/farbe1.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                    <div class="farbe2" style="background-image: url(img/farbe2.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                </div>
+            </div>
+            <div class="infoRight">
+                <div class="infoKaufen">
+                    <div class="infoPreis">
+                        <p>119,95 €</p>
+                    </div>
+                    <div class="infoButton">
+                        <p>Mitarbeiter holen</p>
+                    </div>
+                </div>
+                <div class="infoText">
+                    <div>
+                        <p class="infoParagraph">
+                            Perfektioniere dein Spiel mit diesem Tennisschuh für Männer, der für Stabilität und Geschwindigkeit auf Sandplätzen
+                            entwickelt wurde. Verstärkt mit abriebfestem Adituff hält der leichte Schuh auch deinen explosiven Aufschlägen und
+                            Slides stand.
+                            <br>
+                            <br>
+                            Das atmungsaktive Obermaterial aus Mesh gibt dir auch bei langen Spielen ein angenehm kühles Tragegefühl, während das
+                            Sprintframe Chassis und die gewebten Elemente im Mittelfußbereich Stabilität bieten. Die für Sandplätze entwickelte
+                            Außensohle ist aus besonders strapazierfähigem Adiwear 6, damit dich nichts auf deinem Weg zum Sieg abhalten kann.
+                        </p>
+                    </div>
+                </div>
+                <div class="infoPfeile">
+                    <div class="scroll_up"><img src="img/arrow_top.svg"></div>
+                    <div class="scroll_down"><img src="img/arrow.svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Eigenschaften-Fenster -->
+<section id="eigenschaften-view" style="z-index: 300">
+    <div class="eigenschaften_text_links" id="leftText">
+         <p>Zieh mich nach links</p>
+    </div>
+    <div class="eigenschaften_text_rechts" id="rightText">
+        <p>Zieh mich nach rechts</p>
+    </div>
+    <div class="eigenschaften_bubble_main" id="mainBubble">
+        <div class="eigenschaften_bubble_close">
+            <img src="img/cross.png">
+        </div>
+        <div class="eigenschaften_text">
+            <div class="anzahlParagraph">
+                <div class="paragraph1">
+                    <p class="eigenschaften_paragraph">
+                        Abriebfestes Adituff im Zehen- und Vorfußbereich verhindert lästiges Stoppen bei Aufschlägen, Volleys oder Slides
+                    </p>
+                    <div class="eigenschaften_nr">
+                        <p>01</p>
+                    </div>
+                </div>
+                <div class="paragraph2">
+                    <p class="eigenschaften_paragraph">
+                        Adiprene+ im Vorfußbereich für ein dynamisches und effizientes Abrollverhalten
+                    </p>
+                    <div class="eigenschaften_nr">
+                        <p>02</p>
+                    </div>
+                </div>
+                <div class="paragraph3">
+                    <p class="eigenschaften_paragraph">
+                        Torsion System ermöglicht eine optimierte Bewegungsfreiheit von Rück- zu Vorfuß; gewebte Elemente im Mittelfußbereich für
+                        zusätzlichen Halt bei schnellen Bewegungen
+                    </p>
+                    <div class="eigenschaften_nr">
+                        <p>03</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="eigenschaftenPfeile">
+            <div class="eig_scroll_up"><img src="img/arrow_up_white.svg"></div>
+            <div class="eig_scroll_down"><img src="img/arrow_down_white.svg"></div>
+        </div>
+    </div>
+    <canvas id="CanvasScreen"></canvas>
+</section>
+
+<!-- Galerie-Fenster -->
+<section id="galerie-view" style="z-index: 400">
+    <div class="wrapper">
+        <div class="imagesGallery">
+            <div class="slide1 activeImg" style="background-image: url(img/schuh9.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                <div class="imgBack"></div>
+            </div>
+            <div class="slide2" style="background-image: url(img/schuh7.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                <div class="imgBack"></div>
+            </div>
+            <div class="slide3" style="background-image: url(img/schuh3.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                <div class="imgBack"></div>
+            </div>
+            <div class="slide4" style="background-image: url(img/schuh8.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                <div class="imgBack"></div>
+            </div>
+            <div class="slide5" style="background-image: url(img/schuh5.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                <div class="imgBack"></div>
+            </div>
+            <div class="slide6" style="background-image: url(img/schuh10.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                <div class="imgBack"></div>
+            </div>
+            <div class="slide7" style="background-image: url(img/schuh2.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                <div class="imgBack"></div>
+            </div>
+            <div class="slide8" style="background-image: url(img/schuh4.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                <div class="imgBack"></div>
+            </div>
+        </div>
+        <div class="mainImage">
+            <div class="left_menu">
+                <div class="nr_left">08</div>
+                <div class="b_left">Zurück</div>
+                <div class="rectangle_left"></div>
+            </div>
+            <div class="right_menu">
+                <div class="nr_right">02</div>
+                <div class="b_right">Weiter</div>
+                <div class="rectangle_right"></div>
+            </div>
+            <div class="click_div_gallery">
+                <div class="click_gallery_left"></div>
+                <div class="click_gallery_right"></div>
+            </div>
+            <div class="oldImage" style="width:30vw;height:30vw;position: absolute;top: 0;left:  0;">
+                <div class="showOldImage" style="background-image: url(img/schuh9.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showOldImage" style="background-image: url(img/schuh7.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showOldImage" style="background-image: url(img/schuh3.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showOldImage" style="background-image: url(img/schuh8.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showOldImage" style="background-image: url(img/schuh5.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showOldImage" style="background-image: url(img/schuh10.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showOldImage" style="background-image: url(img/schuh2.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showOldImage" style="background-image: url(img/schuh4.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+            </div>
+            <div class="images">
+                <div class="showImage" style="background-image: url(img/schuh9.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showImage" style="background-image: url(img/schuh7.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showImage" style="background-image: url(img/schuh3.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showImage" style="background-image: url(img/schuh8.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showImage" style="background-image: url(img/schuh5.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showImage" style="background-image: url(img/schuh10.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showImage" style="background-image: url(img/schuh2.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="showImage" style="background-image: url(img/schuh4.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HelpMe-Fenster -->
+<section id="help-view" style="z-index: 15000">
+    <div class="helpBars">
+        <div class="helpBar1"></div>
+        <div class="helpBar2"></div>
+        <div class="helpBar3"></div>
+    </div>
+    <div class="helpBubbles">
+        <div class="helpBubLeft"></div>
+        <div class="helpBubRight"></div>
+    </div>
+    <div class="helpWrapper">
+        <div class="helpTexte">
+            <div class="help_close"><img src="img/cross2.svg"></div>
+            <div class="help_text_top">
+                Du brauchst Hilfe?
+                <br>
+                Dann sags gleich hier!
+            </div>
+            <!-- Carousel Slider -->
+            <div class="cascade-slider_container" id="cascade-slider" style="transform: rotate(90deg);">
+                <div class="cascade-slider_slides">
+                    <div class="cascade-slider_item">
+                        <div style="transform: rotate(-90deg);">
+                            <div class="help1">
+                                <div class="help_text1">
+                                    <div class="miniText" style="font-size: 1vw; font-family: 'Avant Garde Medium BT_0';">Kein Verkäufer in der Nähe? Ruf dir Personal!</div>
+                                    <span>Ich brauche Hilfe zu diesem Produkt</span>
+                                    <div class="clickDiv"></div>
+                                    <div class="progress">
+                                        <div class="my-progress-bar"></div>
+                                        <img class="img" src="img/speaker2.png" style="width: 1vw; top: 5.9vw; height: auto;">
+                                        <audio class="audioEffect">
+                                            <source src="media/gong.wav" type="audio/wav">
+                                        </audio>
+                                    </div>
+                                    <div class="helpWaitTexte">
+                                        <div class="wait1">Einen Moment bitte.</div>
+                                        <div class="wait2">Du kannst gleich wieder Hilfe holen.</div>
+                                        <div class="wait3">Wir wollen nur niemanden unnötig stören.</div>
+                                        <div class="wait4">Vielen Dank für dein Verständnis.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cascade-slider_item">
+                        <div style="transform: rotate(-90deg);">
+                            <div class="help2">
+                                <div class="help_text2">
+                                    <div class="miniText" style="font-size: 1vw; font-family: 'Avant Garde Medium BT_0';">Kein Produkt mehr im Regal? Hol dir Personal!</div>
+                                    <span>Ich finde das Produkt nicht im Regal</span>
+                                    <div class="clickDiv"></div>
+                                    <div class="progress">
+                                        <div class="my-progress-bar"></div>
+                                        <img class="img" src="img/speaker2.png" style="width: 1vw; top: 5.9vw; height: auto;">
+                                        <audio class="audioEffect">
+                                            <source src="media/door.wav" type="audio/wav">
+                                        </audio>
+                                    </div>
+                                    <div class="helpWaitTexte">
+                                        <div class="wait1">Einen Moment bitte.</div>
+                                        <div class="wait2">Du kannst gleich wieder Hilfe holen.</div>
+                                        <div class="wait3">Wir wollen nur niemanden unnötig stören.</div>
+                                        <div class="wait4">Vielen Dank für dein Verständnis.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cascade-slider_item">
+                        <div style="transform: rotate(-90deg);">
+                            <div class="help3">
+                                <div class="help_text3">
+                                    <div class="miniText" style="font-size: 1vw; font-family: 'Avant Garde Medium BT_0';">Dieses Produkt ist ein MUSS! Jetzt Bestellung aufgeben!</div>
+                                    <span>Will ich haben</span>
+                                    <div class="clickDiv"></div>
+                                    <div class="progress">
+                                        <div class="my-progress-bar"></div>
+                                        <img class="img" src="img/speaker2.png" style="width: 1vw; top: 5.9vw; height: auto;">
+                                        <audio class="audioEffect">
+                                            <source src="media/bell.wav" type="audio/wav">
+                                        </audio>
+                                    </div>
+                                    <div class="helpWaitTexte">
+                                        <div class="wait1">Einen Moment bitte.</div>
+                                        <div class="wait2">Du kannst gleich wieder Hilfe holen.</div>
+                                        <div class="wait3">Wir wollen nur niemanden unnötig stören.</div>
+                                        <div class="wait4">Vielen Dank für dein Verständnis.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="help_arrows" style="transform: rotate(-90deg);">
+                    <div class="help_scroll_up cascade-slider_arrow" data-action="prev"><img src="img/arrow_up_white.svg"></div>
+                    <div class="help_scroll_down cascade-slider_arrow" data-action="next"><img src="img/arrow_down_white.svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- particles.js container -->
+<div class="particle_system" >
+    <div id="particles-js" style="opacity: 0.8"></div>
+
+    <script src="js/libs/particles.js"></script>
+    <script src="js/app/ui/custom_particles.js"></script>
+</div>
+
+<!-- scripts-->
+<script type="text/javascript" src=js/libs/cascade-slider.js></script>
+
+<script type="text/javascript" src="js/app/views/willkommenView.js"></script>
+<script type="text/javascript" src="js/app/views/informationenView.js"></script>
+<script type="text/javascript" src="js/app/views/eigenschaftenView.js"></script>
+<script type="text/javascript" src="js/app/views/galerieView.js"></script>
+<script type="text/javascript" src="js/app/views/helpMeView.js"></script>
+
+<script type="text/javascript" src="js/app/ui/gallery.js"></script>
+<script type="text/javascript" src="js/app/ui/farben.js"></script>
+<script type="text/javascript" src="js/app/ui/nav.js"></script>
+<script type="text/javascript" src="js/app/ui/help_carousel.js"></script>
+<script type="text/javascript" src="js/app/ui/reset.js"></script>
+
+<script type="text/javascript" src="js/app/app.js"></script>
+<script type="text/javascript">
+    var app;
+    $(function() {
+         app = new App({
+            // Particle on or off
+            particle : "off"
+        });
+    });
+</script>
+</body>
+</html>

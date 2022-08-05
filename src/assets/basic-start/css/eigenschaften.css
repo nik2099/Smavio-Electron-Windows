@@ -1,0 +1,124 @@
+#eigenschaften-view{
+    position:absolute;
+    background: transparent;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    display: none;
+}
+
+#CanvasScreen {
+    height: 100vh;
+    width: 100vw;
+}
+
+.eigenschaften_bubble_main {
+    border-radius: 100%;
+    background-color: black;
+    width: 42vw;
+    height: 42vw;
+    display: none;
+}
+
+.eigenschaften_bubble_close {
+    border-radius: 100%;
+    border: white solid 1vw;
+    background-color: white;
+    color: white;
+    height: 2vw;
+    width: 2vw;
+    position: absolute;
+    left: 36vw;
+    top: 6vw;
+    text-align: center;
+    font-size: 2vw;
+    font-family: ITCAvantGardeStd-Bold;
+    display: none;
+}
+
+.eigenschaften_bubble_close:hover {
+    cursor:pointer;
+}
+
+.eigenschaften_bubble_close img{
+    width: 2vw;
+    height: 2vw;
+    left: 0vw;
+    top: 0vw;
+    position: absolute;
+}
+
+.eigenschaften_text {
+    width: 27vw;
+    height: 20vw;
+    font-size: 1vw;
+    font-family: ITCAvantGardeStd-Bold;
+    color: white;
+    position: absolute;
+    left: 7.5vw;
+    line-height: 1.5vw;
+    top: 11vw;
+    display: block;
+}
+
+.eigenschaften_text > div > div{
+    margin-bottom: 3vw;
+    width: 25vw;
+    float: right;
+    line-height: 1.5vw;
+    padding-right: 1vw;
+}
+
+.eigenschaften_nr {
+    width: 5vw;
+    float: left;
+    font-size: 2.5vw;
+    font-family: ITCAvantGardeStd-Bold;
+    color: #f2745b;
+    line-height: 2.5vw;
+}
+
+.eigenschaften_nr p {
+    margin: 0;
+}
+
+.eigenschaften_text_links {
+    font-family: ITCAvantGardeStd-Bold;
+    font-size: 1.1vw;
+    color: black;
+}
+
+.eigenschaften_text_rechts {
+    font-family: ITCAvantGardeStd-Bold;
+    font-size: 1.1vw;
+    color: black;
+}
+
+.eigenschaftenPfeile > div{
+    display: inline-block;
+    margin-top: 2vw;
+}
+
+.eigenschaftenPfeile {
+    position: absolute;
+    left: 19vw;
+    top: 32vw;
+}
+
+.eig_scroll_down {
+    width: 1.5vw;
+    padding-left: 2vw;
+    cursor: pointer;
+}
+
+.eig_scroll_up {
+    width: 1.5vw;
+    cursor: pointer;
+}
+
+.eigenschaften_paragraph {
+    width: 20vw;
+    float: right;
+    margin: 0;
+}

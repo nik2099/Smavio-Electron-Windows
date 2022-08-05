@@ -1,0 +1,144 @@
+#welcome-view{
+    position:absolute;
+    background: transparent;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.wrapper{
+    position: relative;
+    top: 50% !important;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: transparent; /*lightcoral*/
+}
+
+.flex {
+    justify-content: space-between;
+    display: flex;
+    align-content: center;
+    background: transparent;
+}
+
+.welcomeLeft {
+    background: transparent;
+    margin: 0.9vw;
+    margin-bottom: 5vw;
+    position: relative;
+}
+
+.welcomeRight {
+    background: transparent;
+    margin: 0.9vw;
+    margin-top: 5vw;
+    position: relative;
+}
+
+.img_single {
+    justify-content: space-between;
+    display: flex;
+    align-content: center;
+    width: 20vw;
+ }
+
+.img_single > div{
+    width: 20vw;
+    height: 20vw;
+    background: transparent;
+}
+
+.img_single > div:first-child {
+    margin-bottom: 1.7vw;
+}
+
+.img_single > div:last-child {
+    margin-top: 1.7vw;
+}
+
+.img_double {
+    justify-content: space-between;
+    display: flex;
+    align-content: center;
+    width: 20vw;
+}
+
+.img_double > div {
+    width: 9.5vw;
+    height: 9vw;
+    background: transparent;
+}
+
+.img_double > div:first-child{
+     margin-right: 0.9vw;
+    height: 9vw;
+ }
+
+.img_double > div:last-child{
+    margin-left: 0.9vw;
+    height: 9vw;
+}
+
+.welcomeText {
+    justify-content: space-between;
+    display: flex;
+    align-content: center;
+    width: 20vw;
+}
+
+.welcomeText > div{
+    width: 20vw;
+    background-color: transparent;
+    text-align: left;
+    margin-bottom: -0.4vw;
+    margin-top: 0.55vw;
+}
+
+.welcomeSubTitle{
+    font-family: "Avant Garde Medium BT_0";
+    font-size: 0.95vw;
+    margin-bottom: -0.55vw;
+}
+
+.welcomeMainTitle{
+    margin-bottom: 0vw;
+    font-size: 1.4vw;
+}
+
+.bigName {
+    font-size: 4vw;
+    position: absolute;
+    width: 100%;
+}
+
+.bubbles {
+    width: -webkit-fit-content;
+    position: absolute;
+    margin-top: -1em;
+    left: 0;
+}
+
+.bubbles {
+    display: inline-block;
+}
+
+.bubbles p {
+    position: relative;
+    z-index: 2;
+}
+
+.individual-bubble {
+    position: absolute;
+    border-radius: 100%;
+    bottom: 10px;
+    background-color: black;
+    z-index: 1;
+}
+
+

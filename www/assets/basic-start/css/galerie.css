@@ -1,0 +1,173 @@
+#galerie-view{
+    position:absolute;
+    background: transparent;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    display: none;
+}
+
+.wrapper{
+    position: relative;
+    height: 100vh;
+}
+
+/*Bildergalerie oben*/
+.imagesGallery {
+    background: transparent;
+    bottom: 0 !important;
+    position: fixed;
+    height: 4.7vw;
+}
+
+.imagesGallery > div{
+    width: 4.7vw;
+    height: 4.7vw;
+    background: transparent;
+    margin: 0.12vw;
+    margin-top: 0vw;
+    position: relative;
+    display: inline-block;
+}
+
+.imagesGallery > div:hover{
+    cursor: pointer;
+}
+
+.activeImg {
+    bottom:0.7vw;
+}
+
+.imgBack {
+    border-top: solid 1vw #f2745b;
+    margin-top: 4.7vw;
+}
+
+/*Hauptbild in der Mitte*/
+.mainImage {
+    background: transparent;
+    top: 50% !important;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: fixed;
+}
+
+.mainImage > div {
+    display: inline-block;
+}
+
+.showImage{
+    width: 30vw;
+    height: 30vw;
+    background: transparent;
+    position: relative;
+}
+
+.images > div{
+    position: relative;
+}
+
+.oldImage > div{
+    position: relative;
+}
+
+.showOldImage{
+    width: 30vw;
+    height: 30vw;
+}
+
+
+/*Pfeile links und rechts*/
+.left_menu  {
+    top: 50% !important;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+    left: -20vw;
+}
+
+.b_left {
+    font-family: "Avant Garde Medium BT_0";
+    font-size: 0.95vw;
+    background-color: transparent;
+}
+
+.b_left:hover{
+    cursor: pointer;
+}
+
+.rectangle_left {
+    height: 4vw;
+    width: 0.1vh;
+    background-color: black;
+    transform: rotate(45deg);
+    position: relative;
+    top: -2.7vw;
+    left: 8vw;
+}
+
+.nr_left {
+    font-size: 2.5vw;
+    width: 3vw;
+    padding: 0;
+    position: relative;
+    float: left;
+    top: -11vw;
+}
+
+.right_menu {
+    top: 50% !important;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+    right: -20vw;
+}
+
+.b_right {
+    font-family: "Avant Garde Medium BT_0";
+    font-size: 0.95vw;
+    background-color: transparent;
+}
+
+.b_right:hover{
+    cursor: pointer;
+}
+
+.rectangle_right {
+    height: 4vw;
+    width: 0.1vh;
+    background-color: black;
+    transform: rotate(45deg);
+    position: relative;
+    top: -2.7vw;
+    right: 4.5vw;
+}
+
+.nr_right {
+    float: right;
+    font-size: 2.5vw;
+    width: 3vw;
+    padding: 0;
+    position: relative;
+    bottom: -16.4vw;
+}
+
+.click_div_gallery > div{
+    position: absolute;
+    width: 12vw;
+    height: 5vw;
+    top: 40% !important;
+}
+
+.click_gallery_left {
+    left: -21vw;
+}
+
+.click_gallery_right {
+    right: -22vw;
+
+}

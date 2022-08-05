@@ -1,0 +1,42 @@
+<ion-content class="login-modal">
+ 
+        <form class="ion-margin-top" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      
+         
+      
+          <ion-input type="text" name="username" [(ngModel)]="form.username" required #username="ngModel" placeholder="Benutzername"></ion-input>
+          <ion-text class="login-error-text" color="danger" *ngIf="username.errors && f.submitted">
+            <small class="ion-padding-start">Username is required!</small>
+          </ion-text>
+      
+          <ion-input type="password" name="password" [(ngModel)]="form.password" required #password="ngModel" placeholder="Passwort"></ion-input>
+          <ion-text class="login-error-text" color="danger" *ngIf="password.errors && f.submitted">
+            <small class="ion-padding-start">Password is required!</small>
+          </ion-text>
+      
+          <ion-row class="ion-margin-top login-row">
+            <ion-col class="ion-text-end">
+              <ion-button type="submit" color="dark" expand="full" [disabled]="isShowLoader">Login</ion-button>
+            </ion-col>
+            <ion-col class="ion-text-start">
+              <ion-button type="button" color="dark" expand="full" (click)="exitApp()" [disabled]="isShowLoader">Beenden</ion-button>
+            </ion-col>
+          </ion-row>
+      
+          <ion-row class="ion-margin-top login-row">
+            <ion-col class="ion-text-center">
+              <ion-spinner *ngIf="isShowLoader"></ion-spinner>
+              <!-- <ion-text color="danger" *ngIf="f.submitted && isLoginFailed && !isShowLoader">
+                <small>Login failed: {{ errorMessage }}</small>
+              </ion-text> -->
+            </ion-col>
+          </ion-row>
+      
+          <ion-row>
+            <ion-col class="ion-text-center">
+              Keine Zugangsdaten? <a [routerLink]="" class="small-text" (click)="presentForgotPasswordModal()">Anfordern</a>
+            </ion-col>
+          </ion-row>
+        </form>
+   
+</ion-content>

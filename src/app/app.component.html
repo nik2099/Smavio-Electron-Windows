@@ -1,0 +1,30 @@
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+</ion-app>
+
+<ion-menu side="start" menuId="first" contentId="main" *ngIf="isLoggedIn">
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-title class="ion-no-margin ion-text-center">Hauptmenü</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list class="ion-text-center">
+      <ion-button expand="full" color="dark" (click)="checkCompaignUpdates()">Kampagnenupdate prüfen</ion-button>
+      <ion-button expand="full" color="dark" (click)="checkUpdates()" onclick="checkForUpdates()">Softwareupdate prüfen</ion-button>
+      <ion-button expand="full" color="dark" (click)="signOut()">Gerät abmelden</ion-button>
+      <ion-button expand="full" color="dark" (click)="exitApp()">Beenden</ion-button>
+      <ion-button expand="full" color="dark" (click)="shutDown()" onclick="presentShutdownConfirmationAlert()">Gerät ausschalten</ion-button>
+      <ion-button class="custom-ion-link-btn" expand="full" fill="clear" (click)="closeMenu()">Fenster schließen</ion-button>
+    </ion-list>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-text>
+          <small>App Version: {{this.appVersions}}</small>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="main" *ngIf="isLoggedIn"></ion-router-outlet>

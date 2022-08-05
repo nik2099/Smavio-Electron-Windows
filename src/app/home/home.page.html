@@ -1,0 +1,15 @@
+<ion-header [translucent]="true" *ngIf="isLoggedIn">
+  <ion-toolbar class="main-header">
+      <ion-buttons slot="start" fill="outline">
+          <ion-menu-button autoHide="true" class="m-btn" *ngIf="isLoggedIn"></ion-menu-button>
+      </ion-buttons>
+    <ion-title align="center" size="small">{{campaignName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="home-container" [fullscreen]="true">
+
+  <iframe class='templateWebPage'  id="frm" name="eventsPage" [src]="campaignUrl" allowfullscreen (load)="iframeLoad($event)" *ngIf="isLoggedIn">
+  </iframe>
+
+</ion-content>
