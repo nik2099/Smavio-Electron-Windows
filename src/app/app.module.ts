@@ -15,12 +15,12 @@ import { NotificationService } from './_services/notification.service';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './_services/token.interceptor';
- import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
-import { Device } from '@awesome-cordova-plugins/device/ngx';
-import { AppVersion } from '@ionic-native/app-version/ngx';
-import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
-import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
-import { LocationAccuracy } from '@awesome-cordova-plugins/location-accuracy/ngx';
+// import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+// import { Device } from '@awesome-cordova-plugins/device/ngx';
+// import { AppVersion } from '@ionic-native/app-version/ngx';
+// import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+// import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
+// import { LocationAccuracy } from '@awesome-cordova-plugins/location-accuracy/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,11 +37,12 @@ import { LocationAccuracy } from '@awesome-cordova-plugins/location-accuracy/ngx
         multi: true
       },
    ScreenOrientation, 
-   AppVersion,
-   AndroidPermissions,
-   LocationAccuracy,
-   NativeGeocoder,
-   Device],
+  //  AppVersion,
+  //  AndroidPermissions,
+  //  LocationAccuracy,
+  //  NativeGeocoder,
+  //  Device
+],
    bootstrap: [AppComponent],
 })
 export class AppModule {}

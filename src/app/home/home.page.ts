@@ -9,6 +9,7 @@ import { NotificationService } from '../_services/notification.service';
 import { Router } from '@angular/router';
 import { MenuController, } from '@ionic/angular';
 import { interval } from 'rxjs';
+import { Device } from '@capacitor/device';
 import { LoadingController } from '@ionic/angular';
 
 @Component({
@@ -24,7 +25,7 @@ export class HomePage implements OnInit {
   campaignName: any;
   user : any;
   isLoading = false;
-
+  device_uuid:any;
 
   constructor(
     public modalController: ModalController,
@@ -38,29 +39,15 @@ export class HomePage implements OnInit {
     private notificationService: NotificationService,
     public loadingController: LoadingController
     ) {
-
+        
+      this.logDeviceInfo();
    
     }
 
 
-     loaderStart() {
-	    this.isLoading = true;
-	    return this.loadingController.create({
-	    //   message: this.wait
-	    }).then(a => {
-	      a.present().then(() => {
-	        console.log('presented');
-	        if (!this.isLoading) {
-	          a.dismiss().then(() => console.log('abort presenting'));
-	        }
-	      });
-	    });
-  }
-
-  loaderStop() {
-    this.isLoading = false;
-    return this.loadingController.dismiss().then(() => console.log('dismissed'));
-  }
+    logDeviceInfo = async () => {
+      this.device_uuid = await Device.getId();
+    };
     
 
   checkStatus(){
@@ -140,7 +127,7 @@ export class HomePage implements OnInit {
                         this.campaignId  = response.data.campaign_id;
                         this.campaignName  = response.data.campaign_name;
                         
-                        const campaign_url = 'https://service-backend.smavio.de/campaign/'+this.campaignId+'/preview'
+                        const campaign_url = 'https://service-backend.smavio.de/campaign/'+this.campaignId+'/preview?deviceid='+this.device_uuid.uuid+''
                         this.campaignUrl =this.sanitizer.bypassSecurityTrustResourceUrl(campaign_url)
                       });
                   }
@@ -190,6 +177,13 @@ export class HomePage implements OnInit {
           handler: () => {
             this.getCampaign();
             alert.dismiss();
+          }
+        },
+        {
+          text: 'Cancel',
+          cssClass: 'custom-ion-link-btn',
+          handler: () => {
+            resolveFunction(false);
           }
         }
       ]

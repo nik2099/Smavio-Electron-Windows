@@ -13,11 +13,11 @@ import { AuthService } from './_services/auth.service';
 import { MenuController, } from '@ionic/angular';
 
 import { Platform } from '@ionic/angular';
-import { Device } from '@awesome-cordova-plugins/device/ngx';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+// import { Device } from '@awesome-cordova-plugins/device/ngx';
+// import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 // import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 
-import { AppVersion } from '@ionic-native/app-version/ngx';
+// import { AppVersion } from '@ionic-native/app-version/ngx';
 
 @Component({
   selector: 'app-root',
@@ -40,16 +40,16 @@ export class AppComponent {
     public platform: Platform,
     public alertController: AlertController,
     private _location: Location,
-    private screenOrientation: ScreenOrientation,
-    private appVersion: AppVersion
+    // private screenOrientation: ScreenOrientation,
+    // private appVersion: AppVersion
   ) {
     
     this.menu.enable(true, 'first');
-    this.appVersion.getVersionCode().then(value => {
-      this.appVersions = value;
-    }).catch(err => {
-      alert(err);
-    });
+    // this.appVersion.getVersionCode().then(value => {
+    //   this.appVersions = value;
+    // }).catch(err => {
+    //   alert(err);
+    // });
 
     this.platforms = this.platform.platforms();
 
@@ -57,7 +57,7 @@ export class AppComponent {
       this.platforms.indexOf('android') !== -1 ||
       this.platforms.indexOf('ios') !== -1
     ) {
-      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+      // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
     }
 
     Network.addListener('networkStatusChange', status => {

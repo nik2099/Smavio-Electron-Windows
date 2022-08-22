@@ -7,11 +7,11 @@ import { Platform } from '@ionic/angular';
 import { Device } from '@capacitor/device';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { Plugins } from '@capacitor/core';
-const { Geolocation } = Plugins;
-import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
-import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
-import { LocationAccuracy } from '@awesome-cordova-plugins/location-accuracy/ngx';
-import { AppVersion } from '@ionic-native/app-version/ngx';
+// const { Geolocation } = Plugins;
+// import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+// import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
+// import { LocationAccuracy } from '@awesome-cordova-plugins/location-accuracy/ngx';
+// import { AppVersion } from '@ionic-native/app-version/ngx';
 
 const AUTH_API = 'https://staging.appmate.in/Smavio-laravel-admin-dashboard/api/';
 const http = Http;
@@ -29,102 +29,102 @@ export class AuthService {
   token: any;
   app_version:any;
 
-  constructor(private androidPermissions: AndroidPermissions,private locationAccuracy: LocationAccuracy,private nativeGeocoder: NativeGeocoder,public platforms: Platform,private tokenStorage: TokenStorageService,private appVersion: AppVersion) {
+  constructor(public platforms: Platform,private tokenStorage: TokenStorageService) {
       this.logDeviceInfo();
-      this.checkGPSPermission();
+      // this.checkGPSPermission();
 
-      this.appVersion.getVersionCode().then(value => {
-        this.app_version = value;
-      }).catch(err => {
-        alert(err);
-      });
+      // this.appVersion.getVersionCode().then(value => {
+      //   this.app_version = value;
+      // }).catch(err => {
+      //   alert(err);
+      // });
    }
 
 
-   checkGPSPermission() {
-		this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
-		  result => {
+  //  checkGPSPermission() {
+	// 	this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
+	// 	  result => {
   
-			if (result.hasPermission) {
+	// 		if (result.hasPermission) {
 	
-			  //If having permission show 'Turn On GPS' dialogue
-			  this.askToTurnOnGPS();
-			} else {
+	// 		  //If having permission show 'Turn On GPS' dialogue
+	// 		  this.askToTurnOnGPS();
+	// 		} else {
 	
-			  //If not having permission ask for permission
-			  this.requestGPSPermission();
-			}
-		  },
-		  err => {
+	// 		  //If not having permission ask for permission
+	// 		  this.requestGPSPermission();
+	// 		}
+	// 	  },
+	// 	  err => {
 			
-			//alert(err);
-		  }
-		);
-	  }
+	// 		//alert(err);
+	// 	  }
+	// 	);
+	//   }
   
   
-	  requestGPSPermission() {
-		this.locationAccuracy.canRequest().then((canRequest: boolean) => {
-		  if (canRequest) {
-			//console.log("4");
-		  } else {
-			//Show 'GPS Permission Request' dialogue
-			this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
-			  .then(
-				() => {
-				  // call method to turn on GPS
-				  this.askToTurnOnGPS();
-				},
+	  // requestGPSPermission() {
+		// this.locationAccuracy.canRequest().then((canRequest: boolean) => {
+		//   if (canRequest) {
+		// 	//console.log("4");
+		//   } else {
+		// 	//Show 'GPS Permission Request' dialogue
+		// 	this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+		// 	  .then(
+		// 		() => {
+		// 		  // call method to turn on GPS
+		// 		  this.askToTurnOnGPS();
+		// 		},
 				
-				error => {
-				  this.askToTurnOnGPS();
-				  //Show alert if user click on 'No Thanks'
-				  //alert('requestPermission Error requesting location permissions ' + error)
-				}
-			  );
-		  }
-		});
-	  }
+		// 		error => {
+		// 		  this.askToTurnOnGPS();
+		// 		  //Show alert if user click on 'No Thanks'
+		// 		  //alert('requestPermission Error requesting location permissions ' + error)
+		// 		}
+		// 	  );
+		//   }
+		// });
+	  // }
   
-	  askToTurnOnGPS() {
-		this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
-		  () => {
-			// When GPS Turned ON call method to get Accurate location coordinates
-			this.getLocationCoordinates()
-		  },
+	  // askToTurnOnGPS() {
+		// this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+		//   () => {
+		// 	// When GPS Turned ON call method to get Accurate location coordinates
+		// 	this.getLocationCoordinates()
+		//   },
 		  
-		  error => {
-			this.askToTurnOnGPS();
-		  }
+		//   error => {
+		// 	this.askToTurnOnGPS();
+		//   }
 		  
-		  //alert('Error requesting location permissions ' + JSON.stringify(error))
-		);
-	  }
+		//   //alert('Error requesting location permissions ' + JSON.stringify(error))
+		// );
+	  // }
 
   
 
-   async getLocationCoordinates() {
-    const coordinates = await Geolocation.getCurrentPosition();
-    console.log('Current', coordinates);
-    this.coords = coordinates.coords;
-    this.reverseGeocode();
-  }
+  //  async getLocationCoordinates() {
+  //   const coordinates = await Geolocation.getCurrentPosition();
+  //   console.log('Current', coordinates);
+  //   this.coords = coordinates.coords;
+  //   this.reverseGeocode();
+  // }
 
-  async reverseGeocode() {
-    if (!this.coords) {
-      const coordinates = await Geolocation.getCurrentPosition();
-      this.coords = coordinates.coords;
-    }
-    let options: NativeGeocoderOptions = {
-      useLocale: true,
-      maxResults: 1
-    };
-    this.nativeGeocoder.reverseGeocode(this.coords.latitude, this.coords.longitude, options)
-      .then((result: NativeGeocoderResult[]) => {
-        this.address = result[0];
-      })
-      .catch((error: any) => console.log(error));
-  }
+  // async reverseGeocode() {
+  //   if (!this.coords) {
+  //     const coordinates = await Geolocation.getCurrentPosition();
+  //     this.coords = coordinates.coords;
+  //   }
+  //   let options: NativeGeocoderOptions = {
+  //     useLocale: true,
+  //     maxResults: 1
+  //   };
+  //   this.nativeGeocoder.reverseGeocode(this.coords.latitude, this.coords.longitude, options)
+  //     .then((result: NativeGeocoderResult[]) => {
+  //       this.address = result[0];
+  //     })
+  //     .catch((error: any) => console.log(error));
+  // }
 
 
 
@@ -142,7 +142,7 @@ export class AuthService {
       method: 'POST',
       url: AUTH_API + 'login',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      data: { 'email': username, 'password': password, 'device_detail': this.deviceInfo , 'appversion': this.app_version,'deviceId':this.uuId.uuid,'device_type':'app'},
+      data: { 'email': username, 'password': password, 'device_detail': this.deviceInfo , 'appversion': 1,'deviceId':this.uuId.uuid,'device_type':'app'},
     };
     const response = http.request(options);
 
